@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:my_app/pip_video_player.dart';
 import 'package:pip_view/pip_view.dart';
 
+import 'DLNAVideoPlayer.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const PipVideoPlayer(),
+      home: const DLNAVideoPlayer(),
     );
   }
 }
