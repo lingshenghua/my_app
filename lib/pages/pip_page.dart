@@ -62,6 +62,7 @@ class PipPageState extends State<PipPage> {
           } else {
             _controller.play();
           }
+          setState(() {});
         },
         child: _controller.value.isPlaying
             ? const Icon(Icons.pause)
