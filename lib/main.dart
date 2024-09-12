@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/pages/dlna_page.dart';
-import 'package:my_app/pages/pip_page.dart';
+import 'package:get/get.dart';
+import 'package:my_app/pages/home_page.dart';
+import 'controller/video_controller.dart';
+import 'common/video_window.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,49 +13,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return GetMaterialApp(
+      title: 'Flutter Demo',
       home: HomePage(),
+      builder: (context, child) {
+        return Stack(
+          children: [
+            child!,
+            const VideoWindow(),
+          ],
+        );
+      },
+      initialBinding: InitBinding(),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
 
-  Widget _buildContainer() {
-    return Container(
-      height: 20,
-    );
-  }
-
+class InitBinding extends Bindings {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Demo App"),
-      ),
-      body: Center(
-          child: Column(
-        children: [
-          const Spacer(),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const DlnaPage()));
-            },
-            child: const Text("Go to DlnaPage Page"),
-          ),
-          _buildContainer(),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const PipPage()));
-            },
-            child: const Text("Go to PipPage Page"),
-          ),
-          const Spacer(),
-        ],
-      )),
-    );
+  void dependencies() {
+    Get.put<VideoController>(VideoController());
   }
 }

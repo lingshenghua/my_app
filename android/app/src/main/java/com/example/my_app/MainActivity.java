@@ -36,9 +36,11 @@ public class MainActivity extends FlutterActivity {
         }
     }
 
+
     @Override
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
         super.configureFlutterEngine(flutterEngine);
+
 
         // 设置通道方法处理
         new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL)
@@ -83,9 +85,6 @@ public class MainActivity extends FlutterActivity {
     @Override
     public void onUserLeaveHint() {
         super.onUserLeaveHint();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            pipPlugin.enterPipMode();
-        }
     }
 
 }
