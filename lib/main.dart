@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_app/pages/home_page.dart';
+import 'package:my_app/home.dart';
 import 'controller/video_controller.dart';
 import 'common/video_window.dart';
 

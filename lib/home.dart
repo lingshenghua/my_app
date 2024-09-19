@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_app/controller/video_controller.dart';
-import 'package:my_app/pages/dlna_page.dart';
-import 'package:my_app/pages/pip_page.dart';
+import 'package:my_app/pages/dnla/dlna_page.dart';
+import 'package:my_app/pages/pip/pip_page.dart';
+import 'package:my_app/pages/scroll/nested.dart';
+import 'package:my_app/pages/scroll/page.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -36,13 +38,32 @@ class HomePage extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               // Permissions.systemAlertWindow(() {
-                if (controller.isFloatingWindowVisible.value) {
-                  controller.hideFloatingWindow();
-                }
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => PipPage()));
+              if (controller.isFloatingWindowVisible.value) {
+                controller.hideFloatingWindow();
+              }
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => PipPage()));
               // });
             },
             child: const Text("Go to PipPage Page"),
+          ),
+          _buildContainer(),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const NestedScrollPage()));
+              // });
+            },
+            child: const Text("Go to NestedScrollPage Page"),
+          ),
+          _buildContainer(),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const MyPageView()));
+              // });
+            },
+            child: const Text("Go to MyPageView Page"),
           ),
           const Spacer(), //
         ],
